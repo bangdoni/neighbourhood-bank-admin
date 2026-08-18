@@ -1,0 +1,26 @@
+name = "nb-admin"
+main = "worker.js"
+compatibility_date = "2025-08-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[[d1_databases]]
+binding = "DB"
+database_name = "nb-some-place"
+database_id = ""
+
+[[r2_buckets]]
+binding = "QR_BUCKET"
+bucket_name = "nb-some-place-bucket"
+
+[vars]
+TIMEZONE = "Asia/Jakarta"
+QR_PUBLIC_URL = "https://nb-admin.some-user.workers.dev/qr"
+
+[build]
+command = ""
+
+# postgres is only used in postgres mode (DB_TYPE=postgres).
+# D1 (sqlite) deployments never invoke it — stub it to satisfy bundler.
+[alias]
+postgres = "./stub-postgres.js"
